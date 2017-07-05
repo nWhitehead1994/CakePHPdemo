@@ -18,7 +18,6 @@
  * constants
  */
 // Load Composer autoload.
-require APP . '/Vendor/autoload.php';
 require __DIR__ . '/paths.php';
 
 // Use composer to load the autoloader.
@@ -34,8 +33,7 @@ require ROOT . DS . 'vendor' . DS . 'autoload.php';
  * - Setting the default application paths.
  */
 require CORE_PATH . 'config' . DS . 'bootstrap.php';
-spl_autoload_unregister(array('App', 'load'));
-spl_autoload_register(array('App', 'load'), true, true);
+
 // You can remove this if you are confident you have intl installed.
 if (!extension_loaded('intl')) {
     trigger_error('You must enable the intl extension to use CakePHP.', E_USER_ERROR);
@@ -138,8 +136,8 @@ if (!Configure::read('App.fullBaseUrl')) {
 
 Cache::config(Configure::consume('Cache'));
 ConnectionManager::config(Configure::consume('Datasources'));
-Email::configTransport(Configure::consume('EmailTransport'));
-Email::config(Configure::consume('Email'));
+// Email::configTransport(Configure::consume('EmailTransport'));
+// Email::config(Configure::consume('Email'));
 Log::config(Configure::consume('Log'));
 Security::salt(Configure::consume('Security.salt'));
 
